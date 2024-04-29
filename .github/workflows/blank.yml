@@ -27,14 +27,14 @@ jobs:
       - uses: actions/checkout@v4
       # Run lint check
       - name: Run Lint
-        uses: ./gradlew lintDebug
+      - uses: ./gradlew lintDebug
 
       # upload HTML test reports
           - name: Upload HTML test report
-            uses: actions/upload-artifact@v2
+          - uses: actions/upload-artifact@v2
            with:
              - name: index.html
-              path: app/build/reports/lint-results-debug.html
+             - path: app/build/reports/lint-results-debug.html
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
