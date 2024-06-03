@@ -32,17 +32,33 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
 
-      - name: Checkout the code
-        uses: actions/checkout@v2
+#      - name: Checkout the code
+#        uses: actions/checkout@v2
+#
+#      - name: Run lint
+#        uses: ./gradlew lintDebug
+#
+#      - name: Upload html test report
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: lint.html
+#          path: app/build/reports/lint-results-debug.html
 
-      - name: Run lint
-        uses: ./gradlew lintDebug
+    lint:
+      name: Perform lint check
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout the code
+          uses: actions/checkout@v2
 
-      - name: Upload html test report
-        uses: actions/upload-artifact@v2
-        with:
-          name: lint.html
-          path: app/build/reports/lint-results-debug.html
+        - name: Run lint
+          uses: ./gradlew lintDebug
+
+        - name: Upload html test report
+          uses: actions/upload-artifact@v2
+          with:
+            name: lint.html
+            path: app/build/reports/lint-results-debug.html
 
 #      - name: Build with gradle
 #        run : ./gradlew build
