@@ -32,11 +32,20 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
 
-      - name: Build with gradle
-        run : ./gradlew build
+      - name: Run lint
+        uses: ./gradlew lintDebug
 
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v4.3.3
+      - name: Upload html test report
+        uses: action/upload-artifact@v2
         with:
-          name: Mockito.apk
-          path: app/build/outputs/apk/debug/app-debug.apk
+          name: lint.html
+          path: app/build/reports/lint-results.debug.html
+
+#      - name: Build with gradle
+#        run : ./gradlew build
+#
+#      - name: Upload a Build Artifact
+#        uses: actions/upload-artifact@v4.3.3
+#        with:
+#          name: Mockito.apk
+#          path: app/build/outputs/apk/debug/app-debug.apk
