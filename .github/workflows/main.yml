@@ -32,6 +32,9 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
 
+      - name: Checkout the code
+        uses: actions/checkout@v2
+
       - name: Run lint
         uses: ./gradlew lintDebug
 
